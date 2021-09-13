@@ -284,6 +284,7 @@ namespace MoreMountains.Tools
 			{
 				// we draw a green point 
 				MMDebug.DrawGizmoPoint(_originalTransformPosition+PathElements[i].PathElementPosition,0.2f,Color.green);
+				
 
 				// we draw a line towards the next point in the path
 				if ((i+1)<PathElements.Count)
