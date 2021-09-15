@@ -81,10 +81,10 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _BottomColor: {r: 0.61957103, g: 0.76974905, b: 0.8584906, a: 0}
+    - _BottomColor: {r: 0.5276344, g: 0.5689414, b: 0.6698113, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _GroundColor: {r: 0.36899996, g: 0.34899998, b: 0.34099993, a: 1}
     - _SkyTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-    - _TopColor: {r: 0.9490196, g: 0.61092687, b: 0.40000004, a: 0}
+    - _TopColor: {r: 0.22877358, g: 0.60377795, b: 0.9150943, a: 1}
   m_BuildTextureStacks: []

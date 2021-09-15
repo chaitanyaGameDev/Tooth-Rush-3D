@@ -62,7 +62,7 @@ Material:
     m_Floats:
     - _BumpScale: 1
     - _Cull: 2
-    - _Cutoff: 0
+    - _Cutoff: 0.171
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EdgeWidth: 0
@@ -79,7 +79,7 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.8490566, g: 0.7271709, b: 0.06808474, a: 1}
-    - _EdgeColor: {r: 0.2264151, g: 0.16380385, b: 0.011747954, a: 1}
+    - _Color: {r: 0.8773585, g: 0.6313643, b: 0.18623178, a: 1}
+    - _EdgeColor: {r: 0.7490196, g: 0.54509807, b: 0.36862746, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []

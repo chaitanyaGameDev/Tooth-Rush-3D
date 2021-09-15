@@ -90,7 +90,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 0
-    - _Metallic: 0.529
+    - _Metallic: 0
     - _Mode: 0
     - _NormalStrength: 0.25
     - _NormalStrength1: 0.17
@@ -120,7 +120,7 @@ Material:
     - __dummy__: 0
     - __outline_gui_dummy__: 0
     m_Colors:
-    - _Color: {r: 0.33962262, g: 0.33962262, b: 0.33962262, a: 1}
+    - _Color: {r: 0.2509804, g: 0.24313726, b: 0.14901961, a: 1}
     - _EdgeColor: {r: 0.36130688, g: 0.13286836, b: 0.038204376, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FlowDirection1: {r: 0.05, g: 0, b: 0, a: 1}

@@ -10,7 +10,10 @@ public class Ground : MonoBehaviour
     [Space(15)]
     [SerializeField] List<GroundPieceSlot> m_Slots;
 
-    public MMPath Path { private set; get; }
+
+    
+
+    public PathCreator PathCreator { private set; get; }
  
     //----------------------------------------------Variables-----------------------------------------------
 
@@ -29,8 +32,10 @@ public class Ground : MonoBehaviour
         {
             if (item.GroundPieceType == m_GroundPieceType && item.GroundMeshObj != null)
             {
+                
+
                 item.GroundMeshObj.SetActive(true);
-                this.Path = item.GroundMeshObj.GetComponent<MMPath>();
+                PathCreator = item.GroundMeshObj.GetComponent<PathCreator>();
             }
             else if(item.GroundMeshObj != null)
             {
@@ -57,4 +62,5 @@ public class GroundPieceSlot
 {
     public GroundPieceType GroundPieceType;
     public GameObject GroundMeshObj;
+   
 }

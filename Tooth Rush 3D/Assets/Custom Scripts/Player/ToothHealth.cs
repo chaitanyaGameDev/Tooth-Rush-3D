@@ -26,16 +26,16 @@ public class ToothHealth : MonoBehaviour
     //----------------------------------------------Methods--------------------------------------------------
     private void OnEnable()
     {
-        CollisionChecks.s_OnHealthyItem_Triggered_event += IncrementHealth;
-        CollisionChecks.s_OnUnHealthyItem_Triggered_event += DecrementHealth;
+        CharacterCollision.s_OnHealthyItem_Triggered_event += IncrementHealth;
+        CharacterCollision.s_OnUnHealthyItem_Triggered_event += DecrementHealth;
 
 
         ToothAgeing.s_OnStateChanged_event += SetHealthOnStart;
     }
     private void OnDisable()
     {
-        CollisionChecks.s_OnHealthyItem_Triggered_event -= IncrementHealth;
-        CollisionChecks.s_OnUnHealthyItem_Triggered_event -= DecrementHealth;
+        CharacterCollision.s_OnHealthyItem_Triggered_event -= IncrementHealth;
+        CharacterCollision.s_OnUnHealthyItem_Triggered_event -= DecrementHealth;
     }
    
     //Used on interaction with items

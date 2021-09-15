@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Hands&Shoes
-  m_Shader: {fileID: 4800000, guid: 630b07f1142b0473fbb4a366f4ac637c, type: 3}
-  m_ShaderKeywords: 
+  m_Name: ChocolateSlice
+  m_Shader: {fileID: 4800000, guid: 1526c808ddcf1481abffe57c4da31bab, type: 3}
+  m_ShaderKeywords: _GLOSSYREFLECTIONS_OFF
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -64,8 +64,8 @@ Material:
     - _EnableTexturedOutline: 0
     - _EnableZSmooth: 0
     - _GlossMapScale: 1
-    - _Glossiness: 0.615
-    - _GlossyReflections: 1
+    - _Glossiness: 0.5
+    - _GlossyReflections: 0
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -73,8 +73,10 @@ Material:
     - _Offset2: 0
     - _Outline: 1
     - _Parallax: 0.02
-    - _RampSmooth: 1
+    - _RampSmooth: 0.5
     - _RampThreshold: 0.5
+    - _RimMax: 1
+    - _RimMin: 0.5
     - _Smoothness: 0.2
     - _SmoothnessTextureChannel: 0
     - _SpecSmooth: 0.05
@@ -87,11 +89,12 @@ Material:
     - __dummy__: 0
     - __outline_gui_dummy__: 0
     m_Colors:
-    - _Color: {r: 0.15294114, g: 0.4078431, b: 0.95686275, a: 1}
+    - _Color: {r: 0.5188679, g: 0.291722, b: 0.20803666, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _HColor: {r: 0.785, g: 0.785, b: 0.785, a: 1}
+    - _HColor: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
     - _OutlineColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _OutlineOffset: {r: 0, g: 0, b: 0, a: 0}
-    - _SColor: {r: 0.19499996, g: 0.19499996, b: 0.19499996, a: 1}
+    - _RimColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 0.6}
+    - _SColor: {r: 0.4433962, g: 0.2043535, b: 0.11921501, a: 1}
     - _SpecColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_BuildTextureStacks: []
