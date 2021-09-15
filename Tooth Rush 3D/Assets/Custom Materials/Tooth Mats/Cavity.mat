@@ -48,7 +48,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NoiseTex:
-        m_Texture: {fileID: 2800000, guid: f3b13b1ebf6e39d4ca1ce4ac83706896, type: 3}
+        m_Texture: {fileID: 2800000, guid: 39a00f3a4d887cc448b5d165b19938eb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal:
@@ -82,7 +82,7 @@ Material:
     - _Cutoff: 0
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _EdgeWidth: 0
+    - _EdgeWidth: 0.372
     - _EnableConstSizeOutline: 0
     - _EnableTexturedOutline: 0
     - _EnableZSmooth: 0
@@ -100,8 +100,8 @@ Material:
     - _Offset2: 0
     - _Outline: 1
     - _Parallax: 0.02
-    - _RampSmooth: 0.1
-    - _RampThreshold: 0.5
+    - _RampSmooth: 0.001
+    - _RampThreshold: 0.821
     - _RimMax: 1
     - _RimMin: 0.5
     - _Smoothness: 0.5
@@ -121,7 +121,7 @@ Material:
     - __outline_gui_dummy__: 0
     m_Colors:
     - _Color: {r: 0.33962262, g: 0.33962262, b: 0.33962262, a: 1}
-    - _EdgeColor: {r: 0.23584908, g: 0.04395127, b: 0.0077874744, a: 1}
+    - _EdgeColor: {r: 0.36130688, g: 0.13286836, b: 0.038204376, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FlowDirection1: {r: 0.05, g: 0, b: 0, a: 1}
     - _FlowDirection2: {r: 0, g: 0.05, b: 0, a: 1}
@@ -129,7 +129,7 @@ Material:
     - _OutlineColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _OutlineOffset: {r: 0, g: 0, b: 0, a: 0}
     - _RimColor: {r: 0.8, g: 0.8, b: 0.8, a: 0.6}
-    - _SColor: {r: 0.19499996, g: 0.19499996, b: 0.19499996, a: 1}
+    - _SColor: {r: 0.2924528, g: 0.2924528, b: 0.2924528, a: 1}
     - _ScrollDirection: {r: 0, g: 0, b: 0, a: 0}
     - _SnowColor: {r: 0.3679245, g: 0.3679245, b: 0.3679245, a: 1}
     - _SnowDirection: {r: 0, g: 1, b: 0, a: 1}

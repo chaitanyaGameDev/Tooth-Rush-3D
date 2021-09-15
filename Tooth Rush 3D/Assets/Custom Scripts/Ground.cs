@@ -21,6 +21,7 @@ public class Ground : MonoBehaviour
     private void Start()
     {
         EnableGroundPiece();
+        
     }
     private void EnableGroundPiece()
     {
@@ -38,7 +39,6 @@ public class Ground : MonoBehaviour
 
         }
     }
-
 
     //----------------------------------------------Methods--------------------------------------------------
 

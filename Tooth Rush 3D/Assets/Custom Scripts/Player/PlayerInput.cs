@@ -6,14 +6,17 @@ public class PlayerInput : MonoBehaviour
 {
     //----------------------------------------------Variables-----------------------------------------------
     //Input Varialbes //Joysick 
-   // [SerializeField] private Joystick m_Joystick;
+    [SerializeField] private Joystick m_Joystick;
    
 
     bool m_InputStarted = false;
 
+    float m_SwipeInpvalue = 0f;
+    float m_CurrentValue = 0f;
+    float m_LastValue;
     //----------------------------------------------Delegate--------------------------------------------------
 
-    public delegate void JoystickInput(float horizontal, float vertical);
+    public delegate void JoystickInput(float horizontal);
     public static event JoystickInput s_OnJoystickInp_event;
 
     //----------------------------------------------Methods--------------------------------------------------
@@ -31,11 +34,29 @@ public class PlayerInput : MonoBehaviour
     }
     private void JoyStickInput()
     {
-      //  float horizontalInput = m_Joystick.Horizontal;
-       // float verticalInput = m_Joystick.Vertical;
-       
+        float horizontalInput = m_Joystick.Horizontal;
 
-      //  s_OnJoystickInp_event?.Invoke(horizontalInput,verticalInput);
+
+        m_SwipeInpvalue = horizontalInput;
+
+        m_CurrentValue = horizontalInput;
+        if (m_CurrentValue != m_LastValue)
+        {
+            m_SwipeInpvalue = m_CurrentValue;
+            m_LastValue = m_CurrentValue;
+
+        }
+
+        else
+        {
+            m_CurrentValue = 0f;
+            m_SwipeInpvalue = m_CurrentValue;
+
+        }
+
+
+        //event
+        s_OnJoystickInp_event?.Invoke(m_SwipeInpvalue);
     }
 
 }
