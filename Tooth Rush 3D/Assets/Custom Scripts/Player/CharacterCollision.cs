@@ -26,7 +26,8 @@ public class CharacterCollision : MonoBehaviour
         {
             GiveHealth give = other.gameObject.GetComponent<GiveHealth>();
 
-            
+
+            Destroy(other.gameObject);
 
             //event
             s_OnHealthyItem_Triggered_event?.Invoke(give.HealthValue);
@@ -37,7 +38,8 @@ public class CharacterCollision : MonoBehaviour
         {
             GiveDamage give = other.gameObject.GetComponent<GiveDamage>();
 
-           
+
+            Destroy(other.gameObject);
 
             //event
             s_OnUnHealthyItem_Triggered_event?.Invoke(give.DamageValue);

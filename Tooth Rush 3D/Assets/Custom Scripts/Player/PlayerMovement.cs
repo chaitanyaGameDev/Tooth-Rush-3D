@@ -8,13 +8,13 @@ public class PlayerMovement : MonoBehaviour
     //----------------------------------------------Variables-----------------------------------------------
 
     [SerializeField] List<Vector3> m_MovePath = new List<Vector3>();
-    private float m_MoveSpeed = 7.5f;
+    private float m_MoveSpeed = 10f;
     private float m_rotationSpeed = 5f;
 
     private int m_CurrentPointID = 0;
     private bool m_IsPointsAvailable = false;
 
-    private float m_accuracy = 2f;
+    private float m_accuracy = 1f;
 
 
     //----------------------------------------------Methods--------------------------------------------------

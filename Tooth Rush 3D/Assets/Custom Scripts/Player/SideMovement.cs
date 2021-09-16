@@ -35,7 +35,12 @@ public class SideMovement : MonoBehaviour
 
     private void MoveSides()
     {
-         transform.localPosition += new Vector3(m_SwipeValue * m_SideMoveSpeed * Time.deltaTime,0f, 0f);
+
+        Vector3 sideVec = new Vector3(m_SwipeValue,0f,0f);
+
+        // transform.localPosition += new Vector3(m_SwipeValue * m_SideMoveSpeed * Time.deltaTime,0f, 0f);
+        transform.localPosition += sideVec * m_SideMoveSpeed * Time.deltaTime;
+
 
         if (this.transform.localPosition.x > m_Xclamp)
         {
