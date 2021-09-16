@@ -22,14 +22,16 @@ public class PlayerInput : MonoBehaviour
     //----------------------------------------------Methods--------------------------------------------------
     private void Update()
     {       
-       /* if (m_SwipeInpvalue != 0 && !m_InputStarted)
+        if (m_SwipeInpvalue != 0 && !m_InputStarted)
         {
-           
+            Player.ChangeState(PlayerState.Playing);
+
             m_InputStarted = true;
-        }*/
+        }
 
+        //event
+        s_OnJoystickInp_event?.Invoke(m_SwipeInpvalue);
 
-        
         JoyStickInput();
     }
     private void JoyStickInput()
@@ -39,7 +41,7 @@ public class PlayerInput : MonoBehaviour
 
         m_SwipeInpvalue = horizontalInput;
 
-        m_CurrentValue = horizontalInput;
+       /* m_CurrentValue = horizontalInput;
         if (m_CurrentValue != m_LastValue)
         {
             m_SwipeInpvalue = m_CurrentValue;
@@ -52,11 +54,10 @@ public class PlayerInput : MonoBehaviour
             m_CurrentValue = 0f;
             m_SwipeInpvalue = m_CurrentValue;
 
-        }
+        }*/
 
 
-        //event
-        s_OnJoystickInp_event?.Invoke(m_SwipeInpvalue);
+       
     }
 
 }

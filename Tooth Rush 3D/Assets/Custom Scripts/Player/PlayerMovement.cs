@@ -29,7 +29,10 @@ public class PlayerMovement : MonoBehaviour
   
     private void LateUpdate()
     {
-        PathMovementAndRotation();
+        if (Player.s_State == PlayerState.Playing)
+        {
+            PathMovementAndRotation();
+        }  
     }
 
     private void PathMovementAndRotation()

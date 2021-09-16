@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
     {
         ChangeState(PlayerState.WaitingForInput);
     }
-    public void ChangeState(PlayerState state)
+    public static void ChangeState(PlayerState state)
     {
         s_State = state;
 
