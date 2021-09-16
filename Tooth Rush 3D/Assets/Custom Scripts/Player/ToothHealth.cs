@@ -41,17 +41,16 @@ public class ToothHealth : MonoBehaviour
     //Used on interaction with items
     private void IncrementHealth(int value)
     {
-        if (!ToothAgeing.s_HasGerms)
-        {
-            if (s_Health <= m_MaxHealth)
-            {
-                s_Health += value;
-            }
+       
 
-            if (s_Health > m_MaxHealth)
-            {
-                s_Health = m_MaxHealth;
-            }          
+        if (s_Health <= m_MaxHealth)
+        {
+            s_Health += value;
+        }
+
+        if (s_Health > m_MaxHealth)
+        {
+            s_Health = m_MaxHealth;
         }
 
         //event

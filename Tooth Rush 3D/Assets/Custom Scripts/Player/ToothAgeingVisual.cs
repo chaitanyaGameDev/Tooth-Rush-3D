@@ -35,6 +35,8 @@ public class ToothAgeingVisual : MonoBehaviour
     [SerializeField] RottenVisual m_Rotten_Visual;
 
 
+    
+
     //----------------------------------------------Methods--------------------------------------------------
     private void OnEnable()
     {
@@ -116,7 +118,7 @@ public class ToothAgeingVisual : MonoBehaviour
 
                 //Enable
                 m_plague_Visual.Enable(true);
-
+                m_plague_Visual.PlagueSpreading(m_plague_Visual.Plague1_Cutoff);
 
                 //Disable
                 m_healthy_Visual.Enable(false);
@@ -125,7 +127,8 @@ public class ToothAgeingVisual : MonoBehaviour
                 m_cavity2_Visual.Enable(false);
                 m_Rotten_Visual.Enable(false);
 
-                
+
+
 
                 break;
 
@@ -138,7 +141,7 @@ public class ToothAgeingVisual : MonoBehaviour
 
                 //Enable
                 m_plague_Visual.Enable(true);
-
+                m_plague_Visual.PlagueSpreading(m_plague_Visual.Plague2_Cutoff);
 
                 //Disable
                 m_healthy_Visual.Enable(false);
@@ -158,7 +161,7 @@ public class ToothAgeingVisual : MonoBehaviour
 
                 //Enable
                 m_plague_Visual.Enable(true);
-
+                m_plague_Visual.PlagueSpreading(m_plague_Visual.Plague3_Cutoff);
 
                 //Disable
                 m_healthy_Visual.Enable(false);
@@ -291,6 +294,25 @@ public class PlagueVisual
     public GameObject Tooth_Plague_White_Gobj;
     public GameObject Tooth_Plague_Gobj;
 
+    public readonly float Plague1_Cutoff = 0.3f;
+    public readonly float Plague2_Cutoff = 0.15f;
+    public readonly float Plague3_Cutoff = 0f;
+
+
+    MaterialPropertyBlock m_Plague_mpb;
+    public MaterialPropertyBlock Plague_Mpb
+    {
+        get
+        {
+            if (m_Plague_mpb == null)
+            {
+                m_Plague_mpb = new MaterialPropertyBlock();
+            }
+
+            return m_Plague_mpb;
+        }
+    }
+
 
     public void Enable(bool status)
     {
@@ -298,6 +320,14 @@ public class PlagueVisual
         Tooth_Plague_Gobj.SetActive(status);
     }
 
+    public void PlagueSpreading(float CutoffValue)
+    {
+        SkinnedMeshRenderer smr = Tooth_Plague_Gobj.GetComponent<SkinnedMeshRenderer>();
+
+        Plague_Mpb.SetFloat("_Cutoff",CutoffValue);
+
+        smr.SetPropertyBlock(Plague_Mpb);
+    }
 }
 
 [System.Serializable]
@@ -312,6 +342,8 @@ public class Cavity1Visual
         Tooth_Cavity1_White_Gobj.SetActive(status);
         Tooth_Cavity1_Gobj.SetActive(status);
     }
+
+
 
 }
 

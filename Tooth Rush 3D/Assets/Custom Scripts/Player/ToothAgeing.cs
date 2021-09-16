@@ -25,7 +25,18 @@ public class ToothAgeing : MonoBehaviour
     //----------------------------------------------Methods--------------------------------------------------
     private void Start()
     {
+
+        if (m_Start_State == ToothAgeState.Shiny || m_Start_State == ToothAgeState.Healthy)
+        {
+            s_HasGerms = false;
+        }
+        else
+        {
+            s_HasGerms = true ;
+        }
+
         ChangeState(m_Start_State);
+   
     }
     private void OnEnable()
     {
@@ -41,64 +52,13 @@ public class ToothAgeing : MonoBehaviour
 
     private void CheckAndChangeState_OnHealthIncremented()
     {
-        if (!s_HasGerms)
-        {
-            if (ToothHealth.s_Health <= m_ageConstraints.ShinyTooth_Start && ToothHealth.s_Health >= m_ageConstraints.ShinyTooth_End)
-            {
-                ChangeState(ToothAgeState.Shiny);
-            }
-
-            else if (ToothHealth.s_Health <= m_ageConstraints.HealthyTooth_Start && ToothHealth.s_Health >= m_ageConstraints.HealthyTooth_End)
-            {
-                ChangeState(ToothAgeState.Healthy);
-            }
-
-            else if (ToothHealth.s_Health <= m_ageConstraints.Germs_Start && ToothHealth.s_Health >= m_ageConstraints.Germs_End)
-            {
-                ChangeState(ToothAgeState.Germs);
-
-            }
-
-            else if (ToothHealth.s_Health <= m_ageConstraints.Plague1_Start && ToothHealth.s_Health >= m_ageConstraints.Plague1_End)
-            {
-                ChangeState(ToothAgeState.Plague1);
-            }
-
-            else if (ToothHealth.s_Health <= m_ageConstraints.Plague2_Start && ToothHealth.s_Health >= m_ageConstraints.Plague2_End)
-            {
-                ChangeState(ToothAgeState.Plague2);
-            }
-
-            else if (ToothHealth.s_Health <= m_ageConstraints.Plague3_Start && ToothHealth.s_Health >= m_ageConstraints.Plague3_End)
-            {
-                ChangeState(ToothAgeState.Plague3);
-            }
-
-            else if (ToothHealth.s_Health <= m_ageConstraints.Cavity1_Start && ToothHealth.s_Health >= m_ageConstraints.Cavity1_End)
-            {
-                ChangeState(ToothAgeState.Cavity1);
-            }
-
-            else if (ToothHealth.s_Health <= m_ageConstraints.Cavity2_Start && ToothHealth.s_Health >= m_ageConstraints.Cavity2_End)
-            {
-                ChangeState(ToothAgeState.Cavity2);
-            }
-
-            else if (ToothHealth.s_Health <= m_ageConstraints.Rotten_Start && ToothHealth.s_Health >= m_ageConstraints.Rotten_End)
-            {
-                ChangeState(ToothAgeState.Rotten);
-            }
-        }
-
 
         if (s_HasGerms)
         {
             s_HasGerms = false;
         }
-       
-    }
-    private void CheckAndChangeState_OnHealthDecremented()
-    {
+
+
         if (ToothHealth.s_Health <= m_ageConstraints.ShinyTooth_Start && ToothHealth.s_Health >= m_ageConstraints.ShinyTooth_End)
         {
             ChangeState(ToothAgeState.Shiny);
@@ -112,49 +72,104 @@ public class ToothAgeing : MonoBehaviour
         else if (ToothHealth.s_Health <= m_ageConstraints.Germs_Start && ToothHealth.s_Health >= m_ageConstraints.Germs_End)
         {
             ChangeState(ToothAgeState.Germs);
+
+        }
+
+        else if (ToothHealth.s_Health <= m_ageConstraints.Plague1_Start && ToothHealth.s_Health >= m_ageConstraints.Plague1_End)
+        {
+            ChangeState(ToothAgeState.Plague1);
+        }
+
+        else if (ToothHealth.s_Health <= m_ageConstraints.Plague2_Start && ToothHealth.s_Health >= m_ageConstraints.Plague2_End)
+        {
+            ChangeState(ToothAgeState.Plague2);
+        }
+
+        else if (ToothHealth.s_Health <= m_ageConstraints.Plague3_Start && ToothHealth.s_Health >= m_ageConstraints.Plague3_End)
+        {
+            ChangeState(ToothAgeState.Plague3);
+        }
+
+        else if (ToothHealth.s_Health <= m_ageConstraints.Cavity1_Start && ToothHealth.s_Health >= m_ageConstraints.Cavity1_End)
+        {
+            ChangeState(ToothAgeState.Cavity1);
+        }
+
+        else if (ToothHealth.s_Health <= m_ageConstraints.Cavity2_Start && ToothHealth.s_Health >= m_ageConstraints.Cavity2_End)
+        {
+            ChangeState(ToothAgeState.Cavity2);
+        }
+
+        else if (ToothHealth.s_Health <= m_ageConstraints.Rotten_Start && ToothHealth.s_Health >= m_ageConstraints.Rotten_End)
+        {
+            ChangeState(ToothAgeState.Rotten);
+        }
+
+
+       
+
+    }
+    private void CheckAndChangeState_OnHealthDecremented()
+    {
+
+        if (PreviousState != ToothAgeState.Shiny)
+        {
             s_HasGerms = true;
         }
 
-        if (s_HasGerms)
+
+        if (ToothHealth.s_Health <= m_ageConstraints.ShinyTooth_Start && ToothHealth.s_Health >= m_ageConstraints.ShinyTooth_End)
         {
-            if (ToothHealth.s_Health <= m_ageConstraints.Plague1_Start && ToothHealth.s_Health >= m_ageConstraints.Plague1_End)
-            {
-                ChangeState(ToothAgeState.Plague1);
-            }
-
-            else if (ToothHealth.s_Health <= m_ageConstraints.Plague2_Start && ToothHealth.s_Health >= m_ageConstraints.Plague2_End)
-            {
-                ChangeState(ToothAgeState.Plague2);
-            }
-
-            else if (ToothHealth.s_Health <= m_ageConstraints.Plague3_Start && ToothHealth.s_Health >= m_ageConstraints.Plague3_End)
-            {
-                ChangeState(ToothAgeState.Plague3);
-            }
-
-            else if (ToothHealth.s_Health <= m_ageConstraints.Cavity1_Start && ToothHealth.s_Health >= m_ageConstraints.Cavity1_End)
-            {
-                ChangeState(ToothAgeState.Cavity1);
-            }
-
-            else if (ToothHealth.s_Health <= m_ageConstraints.Cavity2_Start && ToothHealth.s_Health >= m_ageConstraints.Cavity2_End)
-            {
-                ChangeState(ToothAgeState.Cavity2);
-            }
-
-            else if (ToothHealth.s_Health <= m_ageConstraints.Rotten_Start && ToothHealth.s_Health >= m_ageConstraints.Rotten_End)
-            {
-                ChangeState(ToothAgeState.Rotten);
-            }
+            ChangeState(ToothAgeState.Shiny);
         }
 
-
-
-        if (!s_HasGerms && PreviousState != ToothAgeState.Shiny && PreviousState != ToothAgeState.Healthy)
+        else if (ToothHealth.s_Health <= m_ageConstraints.HealthyTooth_Start && ToothHealth.s_Health >= m_ageConstraints.HealthyTooth_End)
         {
+            ChangeState(ToothAgeState.Healthy);
+        }
+
+        else if (ToothHealth.s_Health <= m_ageConstraints.Germs_Start && ToothHealth.s_Health >= m_ageConstraints.Germs_End)
+        {
+
             s_HasGerms = true;
+            ChangeState(ToothAgeState.Germs);
+            
         }
-        
+
+       
+        if (ToothHealth.s_Health <= m_ageConstraints.Plague1_Start && ToothHealth.s_Health >= m_ageConstraints.Plague1_End)
+        {
+            ChangeState(ToothAgeState.Plague1);
+        }
+
+        else if (ToothHealth.s_Health <= m_ageConstraints.Plague2_Start && ToothHealth.s_Health >= m_ageConstraints.Plague2_End)
+        {
+            ChangeState(ToothAgeState.Plague2);
+        }
+
+        else if (ToothHealth.s_Health <= m_ageConstraints.Plague3_Start && ToothHealth.s_Health >= m_ageConstraints.Plague3_End)
+        {
+            ChangeState(ToothAgeState.Plague3);
+        }
+
+        else if (ToothHealth.s_Health <= m_ageConstraints.Cavity1_Start && ToothHealth.s_Health >= m_ageConstraints.Cavity1_End)
+        {
+            ChangeState(ToothAgeState.Cavity1);
+        }
+
+        else if (ToothHealth.s_Health <= m_ageConstraints.Cavity2_Start && ToothHealth.s_Health >= m_ageConstraints.Cavity2_End)
+        {
+            ChangeState(ToothAgeState.Cavity2);
+        }
+
+        else if (ToothHealth.s_Health <= m_ageConstraints.Rotten_Start && ToothHealth.s_Health >= m_ageConstraints.Rotten_End)
+        {
+            ChangeState(ToothAgeState.Rotten);
+        }
+
+
+       
+
     }
 
     public void ChangeState(ToothAgeState state)
@@ -163,9 +178,14 @@ public class ToothAgeing : MonoBehaviour
         this.PreviousState = CurrentState;
 
         this.CurrentState = state;
-       
+
+
+        
+
         //event
         s_OnStateChanged_event?.Invoke(this.CurrentState);
+
+
 
     }
 
