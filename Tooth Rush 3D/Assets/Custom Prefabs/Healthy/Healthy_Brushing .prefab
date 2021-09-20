@@ -75,6 +75,14 @@ PrefabInstance:
       propertyPath: m_Health
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 9155506852881897127, guid: 7c4ae3bd8084f4f0794446044b7d83e2, type: 3}
+      propertyPath: m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9155506852881897127, guid: 7c4ae3bd8084f4f0794446044b7d83e2, type: 3}
+      propertyPath: m_ItemType
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c4ae3bd8084f4f0794446044b7d83e2, type: 3}
 --- !u!4 &7193445771598330373 stripped

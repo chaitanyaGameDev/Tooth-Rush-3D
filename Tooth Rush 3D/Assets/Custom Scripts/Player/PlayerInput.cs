@@ -39,9 +39,9 @@ public class PlayerInput : MonoBehaviour
         float horizontalInput = m_Joystick.Horizontal;
 
 
-        m_SwipeInpvalue = horizontalInput;
+       m_SwipeInpvalue = horizontalInput;
 
-        m_CurrentValue = horizontalInput;
+       /* m_CurrentValue = horizontalInput;
         if (m_CurrentValue != m_LastValue)
         {
             m_SwipeInpvalue = m_CurrentValue;
@@ -54,7 +54,7 @@ public class PlayerInput : MonoBehaviour
             m_CurrentValue = 0f;
             m_SwipeInpvalue = m_CurrentValue;
 
-        }
+        }*/
     }
 
 }
