@@ -41,7 +41,7 @@ public class PlayerInput : MonoBehaviour
 
         m_SwipeInpvalue = horizontalInput;
 
-       /* m_CurrentValue = horizontalInput;
+        m_CurrentValue = horizontalInput;
         if (m_CurrentValue != m_LastValue)
         {
             m_SwipeInpvalue = m_CurrentValue;
@@ -54,10 +54,7 @@ public class PlayerInput : MonoBehaviour
             m_CurrentValue = 0f;
             m_SwipeInpvalue = m_CurrentValue;
 
-        }*/
-
-
-       
+        }
     }
 
 }

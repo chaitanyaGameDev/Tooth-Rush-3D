@@ -65,7 +65,7 @@ public class ToothAgeingVisual : MonoBehaviour
                 m_shiny_Visual.Enable(true);
 
                 //Disable
-               
+
                 m_plague_Visual.Enable(false);
                 m_cavity1_Visual.Enable(false);
                 m_cavity2_Visual.Enable(false);
@@ -76,7 +76,7 @@ public class ToothAgeingVisual : MonoBehaviour
                 break;
 
 
-                //-----------------------------------------
+            //-----------------------------------------
 
             case ToothAgeState.Healthy:
 
@@ -84,13 +84,13 @@ public class ToothAgeingVisual : MonoBehaviour
                 m_healthy_Visual.Enable(true);
 
                 //Disable
-               
+
                 m_plague_Visual.Enable(false);
                 m_cavity1_Visual.Enable(false);
                 m_cavity2_Visual.Enable(false);
                 m_Rotten_Visual.Enable(false);
 
-               
+
 
 
                 break;
@@ -103,9 +103,21 @@ public class ToothAgeingVisual : MonoBehaviour
             case ToothAgeState.Germs:
 
                 //Enable
-                
 
-                //Disable
+
+
+                //Disable and Enable Healthy
+
+                if (ToothAgeing.s_PreviousState != ToothAgeState.Shiny || ToothAgeing.s_PreviousState != ToothAgeState.Healthy)
+                {
+                    m_plague_Visual.Enable(false);
+                    m_cavity1_Visual.Enable(false);
+                    m_cavity2_Visual.Enable(false);
+                    m_Rotten_Visual.Enable(false);
+                    m_shiny_Visual.Enable(false);
+                    m_healthy_Visual.Enable(true);
+                }
+
 
                 break;
 

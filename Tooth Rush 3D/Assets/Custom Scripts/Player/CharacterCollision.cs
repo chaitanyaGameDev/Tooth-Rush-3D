@@ -45,6 +45,12 @@ public class CharacterCollision : MonoBehaviour
             s_OnUnHealthyItem_Triggered_event?.Invoke(give.DamageValue);
         }
 
-       
+
+        //Gem
+
+        else if (other.gameObject.CompareTag("Gem"))
+        {
+            Destroy(other.gameObject);
+        }
     }
 }

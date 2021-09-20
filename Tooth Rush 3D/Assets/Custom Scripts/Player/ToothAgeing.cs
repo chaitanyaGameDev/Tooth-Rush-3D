@@ -9,8 +9,8 @@ public class ToothAgeing : MonoBehaviour
 
     [SerializeField] ToothAgeState m_Start_State;
 
-    public ToothAgeState CurrentState { private set; get; }
-    public ToothAgeState PreviousState { private set; get;}
+    public static ToothAgeState s_CurrentState { private set; get; }
+    public static ToothAgeState s_PreviousState { private set; get;}
 
     [HideInInspector]
     public ToothAgeingConstraints m_ageConstraints;
@@ -105,14 +105,13 @@ public class ToothAgeing : MonoBehaviour
             ChangeState(ToothAgeState.Rotten);
         }
 
-
-       
+        
 
     }
     private void CheckAndChangeState_OnHealthDecremented()
     {
 
-        if (PreviousState != ToothAgeState.Shiny)
+        if (s_PreviousState != ToothAgeState.Shiny)
         {
             s_HasGerms = true;
         }
@@ -166,26 +165,20 @@ public class ToothAgeing : MonoBehaviour
         {
             ChangeState(ToothAgeState.Rotten);
         }
-
-
-       
-
+ 
     }
 
     public void ChangeState(ToothAgeState state)
     {
+        s_PreviousState = s_CurrentState;
 
-        this.PreviousState = CurrentState;
-
-        this.CurrentState = state;
+        s_CurrentState = state;
 
 
         
 
         //event
-        s_OnStateChanged_event?.Invoke(this.CurrentState);
-
-
+        s_OnStateChanged_event?.Invoke(s_CurrentState);     
 
     }
 
