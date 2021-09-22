@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerInput : MonoBehaviour
 {
@@ -19,6 +20,9 @@ public class PlayerInput : MonoBehaviour
     public delegate void JoystickInput(float horizontal);
     public static event JoystickInput s_OnJoystickInp_event;
 
+    public delegate void HoldingInput(bool IsHolding);
+    public static event HoldingInput s_OnHoldingInp_event;
+
     //----------------------------------------------Methods--------------------------------------------------
     private void Update()
     {       
@@ -28,6 +32,19 @@ public class PlayerInput : MonoBehaviour
 
             m_InputStarted = true;
         }
+
+
+        if (Input.GetMouseButton(0))
+        {
+            //event
+            s_OnHoldingInp_event?.Invoke(true);
+        }
+        else if(Input.GetMouseButtonUp(0))
+        {
+            //event
+            s_OnHoldingInp_event?.Invoke(false);
+        }
+
 
         //event
         s_OnJoystickInp_event?.Invoke(m_SwipeInpvalue);
@@ -39,9 +56,8 @@ public class PlayerInput : MonoBehaviour
         float horizontalInput = m_Joystick.Horizontal;
 
 
-       m_SwipeInpvalue = horizontalInput;
-
-       /* m_CurrentValue = horizontalInput;
+        
+        m_CurrentValue = horizontalInput;
         if (m_CurrentValue != m_LastValue)
         {
             m_SwipeInpvalue = m_CurrentValue;
@@ -54,7 +70,10 @@ public class PlayerInput : MonoBehaviour
             m_CurrentValue = 0f;
             m_SwipeInpvalue = m_CurrentValue;
 
-        }*/
+        }
+
+
+        m_SwipeInpvalue = horizontalInput;
     }
 
 }

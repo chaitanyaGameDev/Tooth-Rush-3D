@@ -16,26 +16,50 @@ public class PlayerMovement : MonoBehaviour
 
     private float m_accuracy = 1f;
 
+    private bool m_CanMove;
 
     //----------------------------------------------Methods--------------------------------------------------
     private void OnEnable()
     {
         PlayerCollision.s_OnGroundEntry_Triggered_event += SetMovementPath;
+        PlayerInput.s_OnHoldingInp_event += SetCanMove;
     }
     private void OnDisable()
     {
         PlayerCollision.s_OnGroundEntry_Triggered_event -= SetMovementPath;
+        PlayerInput.s_OnHoldingInp_event -= SetCanMove;
     }
   
     private void LateUpdate()
     {
-        if (Player.s_State == PlayerState.Playing)
+        //Continus Path movement
+         if (Player.s_State == PlayerState.Playing)
+         {
+            MoveAndRotateOnPath();
+            Character.ChangeState(CharacterState.Moving);
+         }  
+
+
+        //Continus Forward movement
+     /*   if (Player.s_State == PlayerState.Playing)
         {
-            PathMovementAndRotation();
-        }  
+            Movement();
+            Character.ChangeState(CharacterState.Moving);
+        }*/
+
+
+        //Movement when user holding input
+       /* if (Player.s_State == PlayerState.Playing)
+        {
+            if (m_CanMove)
+            {
+                Movement();
+                
+            }
+        }*/
     }
 
-    private void PathMovementAndRotation()
+    private void MoveAndRotateOnPath()
     {
         if (m_MovePath.Count > 0)
         {
@@ -67,49 +91,15 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void Movement()
+    {
+        transform.position += transform.forward * m_MoveSpeed * Time.deltaTime;
+    }
 
 
 
 
-
-    //OLD
-    /*   private void RotateOnPath()
-       {
-           Vector3 movement = m_MovePath[m_CurrentPointID] - transform.position;
-           var rotation = Quaternion.LookRotation(movement);
-           //  var rotation = Quaternion.LookRotation(m_MovePath[m_CurrentPointID] - transform.position);
-           rotation.x = 0f;
-           rotation.z = 0f;
-
-           if (movement != Vector3.zero)
-           {
-               transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * m_rotationSpeed);
-
-           }
-       }   
-       private void MoveOnPath()
-       {
-           float distance = Vector3.Distance(m_MovePath[m_CurrentPointID], transform.position);
-           transform.position = Vector3.MoveTowards(transform.position, m_MovePath[m_CurrentPointID], Time.deltaTime * m_MoveSpeed);
-
-
-           if (distance <= 1f && m_CurrentPointID < m_MovePath.Count - 1)
-           {
-               m_CurrentPointID++;
-           }
-       }
-       private void CheckForWayPointsAvailable()
-       {
-           if (m_CurrentPointID >= m_MovePath.Count || m_MovePath.Count == 0)
-           {
-               m_IsPointsAvailable = false;
-           }
-
-           else
-           {
-               m_IsPointsAvailable = true;
-           }
-       }*/
+   
 
     private void SetMovementPath(List<Transform> pathPoints)
     {    
@@ -117,5 +107,19 @@ public class PlayerMovement : MonoBehaviour
         {
             m_MovePath.Add(pathPoints[i].position);
         }    
+    }
+    private void SetCanMove(bool holdingInp)
+    {
+        m_CanMove = holdingInp;
+
+
+       /* if (holdingInp)
+        {
+            Character.ChangeState(CharacterState.Moving);
+        }
+        else if(!holdingInp)
+        {
+            Character.ChangeState(CharacterState.Idle);
+        }*/
     }
 }

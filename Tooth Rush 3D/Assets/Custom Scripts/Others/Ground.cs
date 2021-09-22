@@ -51,11 +51,11 @@ public class Ground : MonoBehaviour
 public enum GroundPieceType
 {
     Straight_10m,
-    Straight_15m,
+   
     Straight_20m,
     Straight_30m,
-    TurnLeft,
-    TurnRight
+    CurveLeft,
+    CurveRight
 }
 [System.Serializable]
 public class GroundPieceSlot

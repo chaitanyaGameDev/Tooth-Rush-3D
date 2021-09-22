@@ -19,5 +19,6 @@ public enum HealthyItemType
 {
     Base,
     Mouthwash,
-    Brushing
+    Brushing,
+    ToothPaste
 }
