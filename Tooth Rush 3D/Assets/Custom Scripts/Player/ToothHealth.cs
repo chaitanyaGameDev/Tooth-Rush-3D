@@ -42,7 +42,6 @@ public class ToothHealth : MonoBehaviour
     private void IncrementHealth(int value)
     {
        
-
         if (s_Health <= m_MaxHealth)
         {
             s_Health += value;
@@ -119,7 +118,7 @@ public class ToothHealth : MonoBehaviour
 
 
 
-
+    //For Debugging Purpose Only
 
     [SerializeField] int Health;
     private void Update()

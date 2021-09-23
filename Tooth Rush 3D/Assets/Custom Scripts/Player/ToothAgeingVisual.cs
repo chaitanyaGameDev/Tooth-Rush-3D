@@ -253,14 +253,8 @@ public class ToothAgeingVisual : MonoBehaviour
         }
 
     }
-
-
-
-   
-    
-
-
 }
+
 [System.Serializable]
 public class ShinyVisual
 {
@@ -354,8 +348,6 @@ public class Cavity1Visual
         Tooth_Cavity1_White_Gobj.SetActive(status);
         Tooth_Cavity1_Gobj.SetActive(status);
     }
-
-
 
 }
 

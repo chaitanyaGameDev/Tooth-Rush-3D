@@ -25,8 +25,6 @@ public class CharacterSideRotation : MonoBehaviour
 
     private void Update()
     {
-        
-
         SideTurnRotation();
     }
 

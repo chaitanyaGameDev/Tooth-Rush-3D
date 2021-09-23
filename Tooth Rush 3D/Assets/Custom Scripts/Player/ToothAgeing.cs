@@ -175,8 +175,7 @@ public class ToothAgeing : MonoBehaviour
         s_CurrentState = state;
 
 
-        
-
+       
         //event
         s_OnStateChanged_event?.Invoke(s_CurrentState);     
 

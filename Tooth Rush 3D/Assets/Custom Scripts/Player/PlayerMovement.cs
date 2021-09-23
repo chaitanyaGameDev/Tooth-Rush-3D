@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     //----------------------------------------------Variables-----------------------------------------------
 
     [SerializeField] List<Vector3> m_MovePath = new List<Vector3>();
-   [SerializeField] private float m_MoveSpeed = 7.5f;
+    [SerializeField] private float m_MoveSpeed = 7.5f;
     private float m_rotationSpeed = 5f;
 
     private int m_CurrentPointID = 0;
@@ -81,13 +81,13 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
 
-            this.transform.position += transform.forward * m_MoveSpeed * Time.deltaTime;
+            Movement();
 
         }
 
         else
         {
-            transform.position += transform.forward * m_MoveSpeed * Time.deltaTime;
+            Movement();
         }
     }
 
