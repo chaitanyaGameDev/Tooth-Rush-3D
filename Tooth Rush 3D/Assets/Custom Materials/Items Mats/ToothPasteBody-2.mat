@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: ToothPasteBody-2
   m_Shader: {fileID: 4800000, guid: 81a53098d5fbc4b7a91a2fb3cf0731f4, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: _GLOSSYREFLECTIONS_OFF
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -65,7 +65,7 @@ Material:
     - _EnableZSmooth: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.5
-    - _GlossyReflections: 1
+    - _GlossyReflections: 0
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -73,17 +73,19 @@ Material:
     - _Offset2: 0
     - _Outline: 1
     - _Parallax: 0.02
-    - _RampSmooth: 1
-    - _RampThreshold: 0.5
+    - _RampSmooth: 0.182
+    - _RampThreshold: 0.351
     - _RimMax: 1
     - _RimMin: 0.5
     - _Smoothness: 0.2
     - _SmoothnessTextureChannel: 0
-    - _SpecSmooth: 0.05
+    - _SpecSmooth: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _TexLod: 5
     - _UVSec: 0
+    - _VerticalFogMax: 1
+    - _VerticalFogMin: -1
     - _ZSmooth: -0.5
     - _ZWrite: 1
     - __dummy__: 0
@@ -91,10 +93,11 @@ Material:
     m_Colors:
     - _Color: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _HColor: {r: 0.9433962, g: 0.9433962, b: 0.9433962, a: 1}
+    - _HColor: {r: 0.8962264, g: 0.8962264, b: 0.8962264, a: 1}
     - _OutlineColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _OutlineOffset: {r: 0, g: 0, b: 0, a: 0}
     - _RimColor: {r: 0.8, g: 0.8, b: 0.8, a: 0.6}
-    - _SColor: {r: 0.19499996, g: 0.19499996, b: 0.19499996, a: 1}
+    - _SColor: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 1}
     - _SpecColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _VerticalFogColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []

@@ -18,7 +18,6 @@ public class Healthy : MonoBehaviour
 public enum HealthyItemType
 {
     Base,
-    Mouthwash,
-    Brushing,
-    ToothPaste
+    ToothPaste,
+    ToothBrushing
 }

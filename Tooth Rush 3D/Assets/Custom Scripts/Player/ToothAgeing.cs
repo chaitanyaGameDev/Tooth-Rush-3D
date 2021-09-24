@@ -130,7 +130,7 @@ public class ToothAgeing : MonoBehaviour
         else if (ToothHealth.s_Health <= m_ageConstraints.Germs_Start && ToothHealth.s_Health >= m_ageConstraints.Germs_End)
         {
 
-            s_HasGerms = true;
+           // s_HasGerms = true;
             ChangeState(ToothAgeState.Germs);
             
         }

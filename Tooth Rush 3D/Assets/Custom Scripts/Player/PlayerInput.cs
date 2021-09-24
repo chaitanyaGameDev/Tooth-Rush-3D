@@ -54,9 +54,8 @@ public class PlayerInput : MonoBehaviour
     private void JoyStickInput()
     {
         float horizontalInput = m_Joystick.Horizontal;
+    
 
-
-        
         m_CurrentValue = horizontalInput;
         if (m_CurrentValue != m_LastValue)
         {

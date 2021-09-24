@@ -27,7 +27,7 @@ public class CollisionChecks : MonoBehaviour
             GiveHealth give = other.gameObject.GetComponent<GiveHealth>();
 
             //event
-            s_OnHealthyItem_Triggered_event?.Invoke(give.HealthValue);
+            s_OnHealthyItem_Triggered_event?.Invoke(give.MinHealth);
         }
 
         //Un_Healthy Items

@@ -25,17 +25,17 @@ public class ToothHealth : MonoBehaviour
 
     //----------------------------------------------Methods--------------------------------------------------
     private void OnEnable()
-    {
-        CharacterCollision.s_OnHealthyItem_Triggered_event += IncrementHealth;
+    {      
         CharacterCollision.s_OnUnHealthyItem_Triggered_event += DecrementHealth;
-
+        ToothBrushing.s_OnBrushingComplete_event += IncrementHealth;
 
         ToothAgeing.s_OnStateChanged_event += SetHealthOnStart;
     }
     private void OnDisable()
     {
-        CharacterCollision.s_OnHealthyItem_Triggered_event -= IncrementHealth;
+      
         CharacterCollision.s_OnUnHealthyItem_Triggered_event -= DecrementHealth;
+        ToothBrushing.s_OnBrushingComplete_event -= IncrementHealth;
     }
    
     //Used on interaction with items
@@ -71,6 +71,9 @@ public class ToothHealth : MonoBehaviour
         //event
         s_OnHealthDecremented_event?.Invoke();
     }
+
+
+
 
 
     //Used to set health my on Start based on ToothAgeState by subscribing event and un-subscribing instantly

@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
     private void LateUpdate()
     {
         //Continus Path movement
-         if (Player.s_State == PlayerState.Playing)
+         if (Player.s_State == PlayerState.Playing && Character.s_State != CharacterState.Brushing)
          {
             MoveAndRotateOnPath();
             Character.ChangeState(CharacterState.Moving);

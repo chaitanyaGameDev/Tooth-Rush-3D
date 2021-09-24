@@ -37,5 +37,6 @@ public enum CharacterState
 {
    none,
    Idle,
-   Moving
+   Moving,
+   Brushing
 }

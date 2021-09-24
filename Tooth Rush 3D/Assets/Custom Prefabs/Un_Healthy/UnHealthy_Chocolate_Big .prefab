@@ -106,7 +106,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2986765013601723932, guid: 1750bf9fd7cf44ca287317da1f3c7e6f, type: 3}
       propertyPath: m_Size.x
-      value: 1.25
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2986765013601723933, guid: 1750bf9fd7cf44ca287317da1f3c7e6f, type: 3}
       propertyPath: m_RootOrder
@@ -122,7 +122,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2986765013601723933, guid: 1750bf9fd7cf44ca287317da1f3c7e6f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.25
+      value: 20.1525
       objectReference: {fileID: 0}
     - target: {fileID: 2986765013601723933, guid: 1750bf9fd7cf44ca287317da1f3c7e6f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -154,7 +154,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2986765013601723934, guid: 1750bf9fd7cf44ca287317da1f3c7e6f, type: 3}
       propertyPath: m_Name
-      value: 'UnHealthy_Chocolate '
+      value: 'UnHealthy_Chocolate_Big '
       objectReference: {fileID: 0}
     - target: {fileID: 3074124937665194073, guid: 1750bf9fd7cf44ca287317da1f3c7e6f, type: 3}
       propertyPath: m_Enabled
@@ -166,7 +166,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4313022252417236516, guid: 1750bf9fd7cf44ca287317da1f3c7e6f, type: 3}
       propertyPath: m_Damage
-      value: 10
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1750bf9fd7cf44ca287317da1f3c7e6f, type: 3}
@@ -193,23 +193,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 991409d57b45242ab92e8e7d2e31f62d, type: 3}
       propertyPath: m_LocalScale.x
-      value: 7.5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 991409d57b45242ab92e8e7d2e31f62d, type: 3}
       propertyPath: m_LocalScale.y
-      value: 7.5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 991409d57b45242ab92e8e7d2e31f62d, type: 3}
       propertyPath: m_LocalScale.z
-      value: 7.5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 991409d57b45242ab92e8e7d2e31f62d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.025
+      value: -0.125
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 991409d57b45242ab92e8e7d2e31f62d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.5
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 991409d57b45242ab92e8e7d2e31f62d, type: 3}
       propertyPath: m_LocalPosition.z

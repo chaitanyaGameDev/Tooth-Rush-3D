@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using MoreMountains.Feedbacks;
-
+using System;
 
 public class CharacterCollision : MonoBehaviour
 {
@@ -11,17 +11,17 @@ public class CharacterCollision : MonoBehaviour
 
     //----------------------------------------------Delegate--------------------------------------------------
 
-    public delegate void HealthyItemTriggered(int health);
-    public static event HealthyItemTriggered s_OnHealthyItem_Triggered_event;
-
+    public delegate void HealthyItemTriggered(GiveHealth giveHealth);
+    public static event HealthyItemTriggered s_OnToothBrush_Triggered_event;
+    public static event Action s_OnToothPaste_Triggered_event;
 
     public delegate void UnHealthyItemTriggered(int damage);
     public static event UnHealthyItemTriggered s_OnUnHealthyItem_Triggered_event;
-
+    public static event Action s_OnUnHealth_Triggered_event;
 
     //----------------------------------------------MMFeedbacks--------------------------------------------------
 
-    [SerializeField] MMFeedbacks m_Mouthwash_Collect_FB;
+   
 
     //----------------------------------------------Methods--------------------------------------------------
     private void OnTriggerEnter(Collider other)
@@ -29,29 +29,30 @@ public class CharacterCollision : MonoBehaviour
         //Healthy Items
         if (other.gameObject.layer == LayerMask.NameToLayer("Healthy"))
         {
-            GiveHealth give = other.gameObject.GetComponent<GiveHealth>();
+            GiveHealth giveHealth = other.gameObject.GetComponent<GiveHealth>();
             Healthy healthy = other.gameObject.GetComponent<Healthy>();
 
-            //Mouthwash
-            if (healthy.ItemType == HealthyItemType.Mouthwash)
+
+            switch (healthy.ItemType)
             {
+                case HealthyItemType.ToothPaste:
 
-              //  MMFeedbackParticlesInstantiation particlesInstantiation = m_Mouthwash_Collect_FB.GetComponent<MMFeedbackParticlesInstantiation>();
-             //   particlesInstantiation.Offset = other.gameObject.transform.position + new Vector3(0f,0.75f,0.5f);
-                m_Mouthwash_Collect_FB.PlayFeedbacks();
+                    Destroy(other.gameObject);
+
+                    //event
+                    s_OnToothPaste_Triggered_event?.Invoke();
+                    break;
+
+                case HealthyItemType.ToothBrushing:
+
+                    Destroy(other.GetComponent<Collider>());
+                    //event
+                    s_OnToothBrush_Triggered_event?.Invoke(giveHealth);
+                    break;
             }
-           
 
-
-
-
-            Destroy(other.gameObject);
-
-            //event
-            s_OnHealthyItem_Triggered_event?.Invoke(give.HealthValue);
 
         }
-
         //Un_Healthy Items
         else if (other.gameObject.layer == LayerMask.NameToLayer("UnHealthy"))
         {
@@ -62,14 +63,15 @@ public class CharacterCollision : MonoBehaviour
 
             //event
             s_OnUnHealthyItem_Triggered_event?.Invoke(give.DamageValue);
+            s_OnUnHealth_Triggered_event?.Invoke();
         }
 
 
         //Gem
-
         else if (other.gameObject.CompareTag("Gem"))
         {
             Destroy(other.gameObject);
         }
+        
     }
 }
