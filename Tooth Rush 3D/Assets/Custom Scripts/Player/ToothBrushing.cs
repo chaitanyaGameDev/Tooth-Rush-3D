@@ -6,7 +6,7 @@ using System;
 public class ToothBrushing : MonoBehaviour
 {
     //----------------------------------------------Variables-----------------------------------------------
-    private float m_BrushingTime = 1.5f;
+    private float m_BrushingTime = 1.75f;
 
     //----------------------------------------------Delegate--------------------------------------------------
     public static event Action s_OnBrushingStarted_event;

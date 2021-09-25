@@ -22,6 +22,7 @@ public class ToothHealth : MonoBehaviour
     public static event Action s_OnHealthIncremented_event;
     public static event Action s_OnHealthDecremented_event;
 
+    public static event Action s_OnHealthUpdated_event;
 
     //----------------------------------------------Methods--------------------------------------------------
     private void OnEnable()
@@ -54,6 +55,7 @@ public class ToothHealth : MonoBehaviour
 
         //event
         s_OnHealthIncremented_event?.Invoke();
+        s_OnHealthUpdated_event?.Invoke();
     }
     private void DecrementHealth(int value)
     {
@@ -70,6 +72,7 @@ public class ToothHealth : MonoBehaviour
 
         //event
         s_OnHealthDecremented_event?.Invoke();
+        s_OnHealthUpdated_event?.Invoke();
     }
 
 
@@ -110,6 +113,8 @@ public class ToothHealth : MonoBehaviour
                 s_Health = m_ageConstraints.Rotten_Start;
                 break;
         }
+        //event
+        s_OnHealthUpdated_event?.Invoke();
 
         //Un-Subscribing
         ToothAgeing.s_OnStateChanged_event -= SetHealthOnStart;

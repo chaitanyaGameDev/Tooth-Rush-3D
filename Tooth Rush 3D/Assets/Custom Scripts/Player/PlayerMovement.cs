@@ -7,8 +7,8 @@ public class PlayerMovement : MonoBehaviour
 {
     //----------------------------------------------Variables-----------------------------------------------
 
-    [SerializeField] List<Vector3> m_MovePath = new List<Vector3>();
-    [SerializeField] private float m_MoveSpeed = 7.5f;
+    List<Vector3> m_MovePath = new List<Vector3>();
+    private float m_MoveSpeed = 7.5f;
     private float m_rotationSpeed = 5f;
 
     private int m_CurrentPointID = 0;
@@ -102,7 +102,10 @@ public class PlayerMovement : MonoBehaviour
    
 
     private void SetMovementPath(List<Transform> pathPoints)
-    {    
+    {
+        m_MovePath.Clear();
+        m_CurrentPointID = 0;
+
         for (int i = 0; i < pathPoints.Count; i++)
         {
             m_MovePath.Add(pathPoints[i].position);

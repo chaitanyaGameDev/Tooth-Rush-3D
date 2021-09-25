@@ -45,6 +45,14 @@ public class CharacterCollision : MonoBehaviour
 
                 case HealthyItemType.ToothBrushing:
 
+                    
+
+                    if (ToothBody.s_HasToothPasteGel)
+                    {
+                        ItemToothBrush toothBrush = other.gameObject.GetComponent<ItemToothBrush>();
+                        toothBrush.EnableFoamParticles();
+                    }
+
                     Destroy(other.GetComponent<Collider>());
                     //event
                     s_OnToothBrush_Triggered_event?.Invoke(giveHealth);

@@ -33,12 +33,18 @@ public class CharacterAnimation : MonoBehaviour
         switch (state)
         {
             case CharacterState.Idle:
-                m_Animator.SetBool("Moving",false);
+                m_Animator.SetBool("Moving", false);
 
                 break;
+
             case CharacterState.Moving:
                 m_Animator.SetBool("Moving", true);
-
+                m_Animator.SetBool("Brushing", false);
+                break;
+           
+            case CharacterState.Brushing:
+                m_Animator.SetBool("Brushing", true);
+               
                 break;
         }
     }
