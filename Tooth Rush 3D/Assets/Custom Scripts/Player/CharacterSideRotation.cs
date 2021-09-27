@@ -25,7 +25,10 @@ public class CharacterSideRotation : MonoBehaviour
 
     private void Update()
     {
-        SideTurnRotation();
+        if (Character.s_State == CharacterState.Idle || Character.s_State == CharacterState.Moving)
+        {
+            SideTurnRotation();
+        }    
     }
 
     private void SideTurnRotation()

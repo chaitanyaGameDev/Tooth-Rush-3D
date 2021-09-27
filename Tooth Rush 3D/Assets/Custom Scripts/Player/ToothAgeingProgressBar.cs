@@ -15,6 +15,15 @@ public class ToothAgeingProgressBar : MonoBehaviour
     [SerializeField] Transform m_Slider_PlaceHolder;
     [SerializeField] Transform m_StateText_PlaceHolder;
 
+
+    [Header("Fill Colors")]
+
+    [SerializeField] Color m_Red;
+    [SerializeField] Color m_Blue;
+    [SerializeField] Color m_Green;
+    [SerializeField] Color m_Yellow;
+    [SerializeField] Color m_Orange;
+
     //----------------------------------------------Methods--------------------------------------------------
     private void OnEnable()
     {
@@ -40,44 +49,53 @@ public class ToothAgeingProgressBar : MonoBehaviour
             case ToothAgeState.Shiny:
 
                 m_State_text.text = "Shiny";
+                ChangeFillColor(m_Green);
                 break;
             case ToothAgeState.Healthy:
 
                 m_State_text.text = "Healthy";
+                ChangeFillColor(m_Green);
                 break;
             case ToothAgeState.Germs:
 
                 m_State_text.text = "Germs";
+                ChangeFillColor(m_Blue);
                 break;
             case ToothAgeState.Plague1:
 
                 m_State_text.text = "Plague";
+                ChangeFillColor(m_Yellow);
                 break;
             case ToothAgeState.Plague2:
 
                 m_State_text.text = "Plague";
+                ChangeFillColor(m_Yellow);
                 break;
             case ToothAgeState.Plague3:
 
                 m_State_text.text = "Plague";
+                ChangeFillColor(m_Yellow);
                 break;
             case ToothAgeState.Cavity1:
 
                 m_State_text.text = "Cavities";
+                ChangeFillColor(m_Orange);
                 break;
             case ToothAgeState.Cavity2:
                 m_State_text.text = "Cavities";
+                ChangeFillColor(m_Orange);
                 break;
             case ToothAgeState.Rotten:
 
                 m_State_text.text = "Rotten";
+                ChangeFillColor(m_Red);
                 break;
             default:
                 break;
         }
     }
 
-    private void Update()
+  /*  private void Update()
     {
         Vector3 sliderPos = Camera.main.WorldToScreenPoint(m_Slider_PlaceHolder.position);
         m_Case_image.transform.position = sliderPos;
@@ -85,5 +103,12 @@ public class ToothAgeingProgressBar : MonoBehaviour
 
         Vector3 stateTextPos = Camera.main.WorldToScreenPoint(m_StateText_PlaceHolder.position);
         m_State_text.transform.position = stateTextPos;
-    }
+    }*/
+
+
+   private void ChangeFillColor(Color color)
+   {
+        m_Fill_image.color = color;
+   }
 }
+

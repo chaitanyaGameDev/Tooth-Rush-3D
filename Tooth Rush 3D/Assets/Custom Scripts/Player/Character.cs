@@ -38,5 +38,6 @@ public enum CharacterState
    none,
    Idle,
    Moving,
-   Brushing
+   Brushing,
+   Death
 }

@@ -21,7 +21,8 @@ public class CharacterCollision : MonoBehaviour
 
     //----------------------------------------------MMFeedbacks--------------------------------------------------
 
-   
+
+    [SerializeField] MMFeedbacks m_CoinCollect_FB;
 
     //----------------------------------------------Methods--------------------------------------------------
     private void OnTriggerEnter(Collider other)
@@ -76,8 +77,15 @@ public class CharacterCollision : MonoBehaviour
 
 
         //Gem
-        else if (other.gameObject.CompareTag("Gem"))
+        else if (other.gameObject.CompareTag("Coin"))
         {
+
+            MMFeedbackParticlesInstantiation particlesInstantiation = m_CoinCollect_FB.gameObject.GetComponent<MMFeedbackParticlesInstantiation>();
+            particlesInstantiation.TargetWorldPosition = other.gameObject.transform.position;
+
+            //Feedback
+            m_CoinCollect_FB.PlayFeedbacks();
+
             Destroy(other.gameObject);
         }
         

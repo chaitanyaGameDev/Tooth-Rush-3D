@@ -30,7 +30,7 @@ public class SideMovement : MonoBehaviour
   
     private void Update()
     {
-        if (Character.s_State != CharacterState.Brushing)
+        if (Character.s_State == CharacterState.Idle || Character.s_State == CharacterState.Moving)
         {
             MoveSides();
         }

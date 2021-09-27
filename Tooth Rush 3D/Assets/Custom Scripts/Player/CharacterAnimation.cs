@@ -43,9 +43,13 @@ public class CharacterAnimation : MonoBehaviour
                 break;
            
             case CharacterState.Brushing:
-                m_Animator.SetBool("Brushing", true);
-               
+                m_Animator.SetBool("Brushing", true);   
                 break;
+
+            case CharacterState.Death:
+                m_Animator.SetTrigger("Death");
+                break;
+
         }
     }
 }

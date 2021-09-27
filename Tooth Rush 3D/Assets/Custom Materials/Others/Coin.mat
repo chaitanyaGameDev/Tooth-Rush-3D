@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Gem
+  m_Name: Coin
   m_Shader: {fileID: 4800000, guid: 8302807d5c3d34f85a1cfdcde75e1871, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
@@ -53,7 +53,7 @@ Material:
     - _SpecSmooth: 0.05
     - __dummy__: 0
     m_Colors:
-    - _Color: {r: 0.5786162, g: 0, b: 0.8679245, a: 1}
+    - _Color: {r: 0.8666667, g: 0.7201945, b: 0, a: 1}
     - _HColor: {r: 1, g: 1, b: 1, a: 1}
     - _RimColor: {r: 0.97492874, g: 0.8066038, b: 1, a: 0.6}
     - _SColor: {r: 0.29999998, g: 0.29999998, b: 0.29999998, a: 1}

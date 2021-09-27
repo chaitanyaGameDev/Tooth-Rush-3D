@@ -73,6 +73,15 @@ public class ToothHealth : MonoBehaviour
         //event
         s_OnHealthDecremented_event?.Invoke();
         s_OnHealthUpdated_event?.Invoke();
+
+
+
+
+        if (s_Health == 0)
+        {
+            Player.ChangeState(PlayerState.LevelFailed);
+            Character.ChangeState(CharacterState.Death);
+        }
     }
 
 
