@@ -19,10 +19,14 @@ public class CharacterCollision : MonoBehaviour
     public static event UnHealthyItemTriggered s_OnUnHealthyItem_Triggered_event;
     public static event Action s_OnUnHealth_Triggered_event;
 
+
+   
+
     //----------------------------------------------MMFeedbacks--------------------------------------------------
 
 
     [SerializeField] MMFeedbacks m_CoinCollect_FB;
+    [SerializeField] MMFeedbacks m_FoodCollect_FB;
 
     //----------------------------------------------Methods--------------------------------------------------
     private void OnTriggerEnter(Collider other)
@@ -42,11 +46,14 @@ public class CharacterCollision : MonoBehaviour
 
                     //event
                     s_OnToothPaste_Triggered_event?.Invoke();
+
+
+                    //Manager Updates
+                    ScoreManager.Instance.UpdateScore(ScoreManager.ToothPaste_Score);
+
                     break;
 
                 case HealthyItemType.ToothBrushing:
-
-                    
 
                     if (ToothBody.s_HasToothPasteGel)
                     {
@@ -57,6 +64,10 @@ public class CharacterCollision : MonoBehaviour
                     Destroy(other.GetComponent<Collider>());
                     //event
                     s_OnToothBrush_Triggered_event?.Invoke(giveHealth);
+
+
+                   
+
                     break;
             }
 
@@ -68,6 +79,10 @@ public class CharacterCollision : MonoBehaviour
             GiveDamage give = other.gameObject.GetComponent<GiveDamage>();
 
 
+            //Feedback
+            m_FoodCollect_FB.PlayFeedbacks();
+
+
             Destroy(other.gameObject);
 
             //event
@@ -76,7 +91,7 @@ public class CharacterCollision : MonoBehaviour
         }
 
 
-        //Gem
+        //Coin
         else if (other.gameObject.CompareTag("Coin"))
         {
 
@@ -87,7 +102,20 @@ public class CharacterCollision : MonoBehaviour
             m_CoinCollect_FB.PlayFeedbacks();
 
             Destroy(other.gameObject);
+
+
+
+            //Manager Update
+            ScoreManager.Instance.UpdateScore(ScoreManager.Coin_Score);
+            CoinManager.Instance.UpdateCoins(CoinManager.PerPiece_Coin);
         }
-        
+
+
+        //Finish
+        else if (other.gameObject.CompareTag("Finish"))
+        {
+            Player.ChangeState(PlayerState.LevelCompleted);
+            Character.ChangeState(CharacterState.Victory);
+        }
     }
 }

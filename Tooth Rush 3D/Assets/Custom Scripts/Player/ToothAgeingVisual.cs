@@ -35,20 +35,25 @@ public class ToothAgeingVisual : MonoBehaviour
     [SerializeField] RottenVisual m_Rotten_Visual;
 
 
+    [Header("fx")]
+    [SerializeField] ParticleSystem m_Shiny_fx;
+    [SerializeField] ParticleSystem m_Healthy_fx;
+    [SerializeField] ParticleSystem m_BadSmell_fx;
     
-
     //----------------------------------------------Methods--------------------------------------------------
     private void OnEnable()
     {
-        ToothAgeing.s_OnStateChanged_event += CheckAndEnableToothAgeingVisual;
+        ToothAgeing.s_OnStateChanged_event += CheckAndEnable_ToothAgeingVisual;
+        ToothAgeing.s_OnStateChanged_event += CheckAndEnable_Fx;
     }
     private void OnDisable()
     {
-        ToothAgeing.s_OnStateChanged_event -= CheckAndEnableToothAgeingVisual;
+        ToothAgeing.s_OnStateChanged_event -= CheckAndEnable_ToothAgeingVisual;
+        ToothAgeing.s_OnStateChanged_event -= CheckAndEnable_Fx;
     }
 
 
-    private void CheckAndEnableToothAgeingVisual(ToothAgeState state)
+    private void CheckAndEnable_ToothAgeingVisual(ToothAgeState state)
     {
         switch (state)
         {
@@ -253,6 +258,41 @@ public class ToothAgeingVisual : MonoBehaviour
         }
 
     }
+
+    private void CheckAndEnable_Fx(ToothAgeState state)
+    {
+
+        if (state == ToothAgeState.Shiny)
+        {
+            m_Shiny_fx.gameObject.SetActive(true);
+        }
+        else
+        {
+            m_Shiny_fx.gameObject.SetActive(false);
+        }
+
+
+        if (state == ToothAgeState.Healthy)
+        {
+            m_Healthy_fx.gameObject.SetActive(true);
+        }
+        else
+        {
+            m_Healthy_fx.gameObject.SetActive(false);
+        }
+
+
+
+        if (state == ToothAgeState.Healthy || state == ToothAgeState.Shiny)
+        {
+            m_BadSmell_fx.gameObject.SetActive(false);
+        }
+        else
+        {
+            m_BadSmell_fx.gameObject.SetActive(true);
+        }
+    }
+  
 }
 
 [System.Serializable]

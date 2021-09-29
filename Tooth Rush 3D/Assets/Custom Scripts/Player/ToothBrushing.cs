@@ -31,6 +31,9 @@ public class ToothBrushing : MonoBehaviour
         if (ToothBody.s_HasToothPasteGel)
         {
             healthToGive = giveHealth.MaxHealth;
+
+            //Manager Update
+            ScoreManager.Instance.UpdateScore(ScoreManager.Brushing_Score);
         }
         else
         {

@@ -24,6 +24,8 @@ public class ToothAgeingProgressBar : MonoBehaviour
     [SerializeField] Color m_Yellow;
     [SerializeField] Color m_Orange;
 
+    
+
     //----------------------------------------------Methods--------------------------------------------------
     private void OnEnable()
     {
@@ -39,6 +41,7 @@ public class ToothAgeingProgressBar : MonoBehaviour
     {
         float fillValue = ToothHealth.s_Health / 100f;
         m_Fill_image.fillAmount = fillValue;
+
     }
     private void UpdateStateText(ToothAgeState state)
     {
@@ -47,6 +50,8 @@ public class ToothAgeingProgressBar : MonoBehaviour
             case ToothAgeState.none:
                 break;
             case ToothAgeState.Shiny:
+
+                
 
                 m_State_text.text = "Shiny";
                 ChangeFillColor(m_Green);
@@ -92,6 +97,21 @@ public class ToothAgeingProgressBar : MonoBehaviour
                 break;
             default:
                 break;
+        }
+
+
+
+        if (state == ToothAgeState.Shiny)
+        {
+            m_Case_image.gameObject.SetActive(false);
+            m_Fill_image.gameObject.SetActive(false);
+            m_State_text.gameObject.SetActive(false);
+        }
+        else
+        {
+            m_Case_image.gameObject.SetActive(true);
+            m_Fill_image.gameObject.SetActive(true);
+            m_State_text.gameObject.SetActive(true);
         }
     }
 
