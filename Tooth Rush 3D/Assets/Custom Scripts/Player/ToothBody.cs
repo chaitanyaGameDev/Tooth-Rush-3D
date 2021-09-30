@@ -27,8 +27,8 @@ public class ToothBody : MonoBehaviour
     }
     private void OnDisable()
     {
-        CharacterCollision.s_OnToothPaste_Triggered_event += SetAndEnable_ToothPasteGel;
-        CharacterCollision.s_OnUnHealth_Triggered_event += SetAndDisable_ToothPasteGel;
+        CharacterCollision.s_OnToothPaste_Triggered_event -= SetAndEnable_ToothPasteGel;
+        CharacterCollision.s_OnUnHealth_Triggered_event -= SetAndDisable_ToothPasteGel;
 
 
         ToothBrushing.s_OnBrushingStarted_event -= SetAndDisable_ToothPasteGel;

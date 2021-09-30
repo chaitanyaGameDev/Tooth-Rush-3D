@@ -16,7 +16,14 @@ public class CoinManager : GenericSingleton<CoinManager>
     public static event Action s_CoinsUpdated_event;
 
     //----------------------------------------------Methods---------------------------------------------------
-
+    private void OnEnable()
+    {
+        LevelLoadSystem.s_LoadLevelCompleted_Event += ResetCoins;
+    }
+    private void OnDisable()
+    {
+        LevelLoadSystem.s_LoadLevelCompleted_Event -= ResetCoins;
+    }
     private void ResetCoins()
     {
         CurrentCoins = 0;

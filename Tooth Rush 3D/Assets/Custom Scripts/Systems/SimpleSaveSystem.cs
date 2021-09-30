@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
 
-public class SimpleSaveSystem : MonoBehaviour
+public class SimpleSaveSystem : GenericSingleton<SimpleSaveSystem>
 {
     //----------------------------------------------Variables-------------------------------------------------
 
@@ -33,15 +33,30 @@ public class SimpleSaveSystem : MonoBehaviour
             PlayerPrefs.DeleteAll();
         }
       
-        // CreateKeySlots();      
+         CreateKeySlots();      
     }
     private void OnEnable()
     {
         LevelLoadSystem.s_LoadLevelCompleted_Event += ResetAllMemberSavables;
+
+        WinScreenUI.s_NextButtonClicked_event += SaveOnNextClicked;
     }
     private void OnDisable()
     {      
         LevelLoadSystem.s_LoadLevelCompleted_Event -= ResetAllMemberSavables;
+
+        WinScreenUI.s_NextButtonClicked_event -= SaveOnNextClicked;
+    }
+
+
+    //Saves data when winUI next button Clicked
+    private void SaveOnNextClicked()
+    {
+        SetLvlNumberTobeSaved();
+        SetSceneBuildIndexTobeSaved();
+        SetCoinsTobeSaved();
+
+        Save();
     }
 
 
@@ -81,21 +96,24 @@ public class SimpleSaveSystem : MonoBehaviour
     private void SetSceneBuildIndexTobeSaved()
     {
         int alreadySavedSceneBuildIndex = PlayerPrefs.GetInt(s_SceneBuildIndexKey,1);
-
+  
         int newSceneBuildIndex = alreadySavedSceneBuildIndex + 1;
 
-       /* if (newSceneBuildIndex > m_LastSceneIndex && SceneManager.sceneCount > 0)
+
+        //Clamping Scene index as game has only 3 scenes
+        if (newSceneBuildIndex > 3)
         {
-            newSceneBuildIndex = loopStartSceneIndex;
-        }*/
+            newSceneBuildIndex = 1;
+        }
+
 
         m_SavableSceneBuildIndex = newSceneBuildIndex;       
     }
-    private void SetCoinsTobeSaved(int amount)
+    private void SetCoinsTobeSaved()
     {
         int alreadySavedCoins = PlayerPrefs.GetInt(s_CoinsKey,0);
 
-        int newCoins = alreadySavedCoins + amount;
+        int newCoins = alreadySavedCoins + CoinManager.Instance.CurrentCoins;
 
 
         m_SavableCoins = newCoins;
@@ -114,8 +132,5 @@ public class SimpleSaveSystem : MonoBehaviour
         s_SaveSystemUpdated_event?.Invoke();
     }
 
-
- 
-   
 
 }

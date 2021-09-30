@@ -15,8 +15,8 @@ public class PlayerMovement : MonoBehaviour
 
    
     private int m_CurrentPointID = 0;
-    private bool m_IsPointsAvailable = false;
-    private bool m_CanMove;
+  //  private bool m_IsPointsAvailable = false;
+   // private bool m_CanMove;
     //----------------------------------------------Methods--------------------------------------------------
     private void OnEnable()
     {

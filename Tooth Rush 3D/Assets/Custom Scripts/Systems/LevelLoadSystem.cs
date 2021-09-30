@@ -4,13 +4,11 @@ using UnityEngine;
 using System;
 using UnityEngine.SceneManagement;
 
-public class LevelLoadSystem : MonoBehaviour
+public class LevelLoadSystem : GenericSingleton<LevelLoadSystem>
 {
     //----------------------------------------------Variables-----------------------------------------------
 
     private List<AsyncOperation> m_loadOperations;
-
-   
 
     //----------------------------------------------Actions--------------------------------------------------
 
@@ -18,12 +16,20 @@ public class LevelLoadSystem : MonoBehaviour
 
     //----------------------------------------------Methods--------------------------------------------------
 
-   
-
+    private void OnEnable()
+    {
+        WinScreenUI.s_NextButtonClicked_event += LoadOnNextClick;
+        FailScreenUI.s_ContinueButtonClick_Event += LoadOnContinueClick;
+    }
+    private void OnDisable()
+    {
+        WinScreenUI.s_NextButtonClicked_event -= LoadOnNextClick;
+        FailScreenUI.s_ContinueButtonClick_Event -= LoadOnContinueClick;
+    }
     private void Start()
     {
         m_loadOperations = new List<AsyncOperation>();
-       StartCoroutine( LoadNewSceneOnStart());
+        StartCoroutine( LoadNewSceneOnStart());
     }
 
     //Async Methods
@@ -83,7 +89,7 @@ public class LevelLoadSystem : MonoBehaviour
         }
     }
 
-
+    //Loads the level on --> Game Start
     private IEnumerator LoadNewSceneOnStart()
     {
         yield return new WaitForSeconds(3f);
@@ -92,16 +98,30 @@ public class LevelLoadSystem : MonoBehaviour
         LoadLevel(savedBuildIndex);
     }
 
+    //Loads the level on --> Level Completed
     private void LoadOnNextClick()
     {
-        StartCoroutine(LoadNewSceneOnFinish());
+        StartCoroutine(LoadNewSceneOnWin());
     }
-    private IEnumerator LoadNewSceneOnFinish()
+    private IEnumerator LoadNewSceneOnWin()
     {      
         yield return new WaitForSeconds(3f);
         int savedBuildIndex = PlayerPrefs.GetInt(SimpleSaveSystem.s_SceneBuildIndexKey, 1);
         LoadLevel(savedBuildIndex);
     }
+
+    //Loads the level on --> Level Failed
+    private void LoadOnContinueClick()
+    {
+        StartCoroutine(LoadNewSceneOnFail());
+    }
+    private IEnumerator LoadNewSceneOnFail()
+    {
+        yield return new WaitForSeconds(3f);
+        int savedBuildIndex = PlayerPrefs.GetInt(SimpleSaveSystem.s_SceneBuildIndexKey, 1);
+        LoadLevel(savedBuildIndex);
+    }
+
 
     private IEnumerator DelayLevelLoadCompletedEvent()
     {

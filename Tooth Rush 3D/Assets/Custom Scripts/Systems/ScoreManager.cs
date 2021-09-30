@@ -19,7 +19,15 @@ public class ScoreManager : GenericSingleton<ScoreManager>
     public static event Action s_ScoreUpdated_event;
 
     //----------------------------------------------Methods---------------------------------------------------
-  
+    private void OnEnable()
+    {
+        LevelLoadSystem.s_LoadLevelCompleted_Event += ResetScore;
+    }
+    private void OnDisable()
+    {
+        LevelLoadSystem.s_LoadLevelCompleted_Event -= ResetScore;
+    }
+
     private void ResetScore()
     {
         CurrentScore = 0;

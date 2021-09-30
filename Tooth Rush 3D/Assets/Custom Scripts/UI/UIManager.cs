@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class UIManager : MonoBehaviour
+public class UIManager : GenericSingleton<UIManager>
 {
     //----------------------------------------------Variables-----------------------------------------------
     [Header("[UI Screens]")]
@@ -54,10 +54,12 @@ public class UIManager : MonoBehaviour
             case PlayerState.LevelCompleted:
                 QuickAllUIDisable();
                 ShowDisplayUIScreen(UIScreenType.WinScreen,5f,true);
+                ShowDisplayUIScreen(UIScreenType.CoinsScreen,5f,true);
                 break;
             case PlayerState.LevelFailed:
                 QuickAllUIDisable();
                 ShowDisplayUIScreen(UIScreenType.FailScreen, 3f, true);
+                ShowDisplayUIScreen(UIScreenType.CoinsScreen, 3f, true);
                 break;
             default:
                 break;
