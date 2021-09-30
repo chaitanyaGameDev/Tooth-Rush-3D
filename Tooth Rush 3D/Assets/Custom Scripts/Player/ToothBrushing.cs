@@ -17,6 +17,8 @@ public class ToothBrushing : MonoBehaviour
     [SerializeField] List<String> m_BrushComplete_Strings;
     private string m_Selected_String;
 
+
+    [SerializeField] MMFeedbacks m_BrushStarted_FB;
     [SerializeField] MMFeedbacks m_BrushComplete_FB;
 
     [SerializeField] Animator m_FloatingTextAnimator;
@@ -57,6 +59,9 @@ public class ToothBrushing : MonoBehaviour
 
         //event
         s_OnBrushingStarted_event?.Invoke();
+
+        //Feedback
+        m_BrushStarted_FB.PlayFeedbacks();
 
         Character.ChangeState(CharacterState.Brushing);
         StartCoroutine(Brushing(healthToGive));

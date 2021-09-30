@@ -14,6 +14,7 @@ public class UIManager : GenericSingleton<UIManager>
 
     [SerializeField] GameObject m_Coins_Screen;
 
+    [SerializeField] GameObject m_Loading_Screen;
 
     //----------------------------------------------Actions--------------------------------------------------
 
@@ -27,6 +28,10 @@ public class UIManager : GenericSingleton<UIManager>
 
         WinScreenUI.s_NextButtonClicked_event += DisableAllDisplay;
         FailScreenUI.s_ContinueButtonClick_Event += DisableAllDisplay;
+
+        WinScreenUI.s_NextButtonClicked_event += DisplayLoadingScreen;
+        FailScreenUI.s_ContinueButtonClick_Event += DisplayLoadingScreen;
+        LevelLoadSystem.s_LoadLevelCompleted_Event += DisableLoadingScreen;
     } 
     private void OnDisable()
     {
@@ -34,6 +39,11 @@ public class UIManager : GenericSingleton<UIManager>
 
         WinScreenUI.s_NextButtonClicked_event -= DisableAllDisplay;
         FailScreenUI.s_ContinueButtonClick_Event -= DisableAllDisplay;
+
+
+        WinScreenUI.s_NextButtonClicked_event -= DisplayLoadingScreen;
+        FailScreenUI.s_ContinueButtonClick_Event -= DisplayLoadingScreen;
+        LevelLoadSystem.s_LoadLevelCompleted_Event -= DisableLoadingScreen;
     }
 
 
@@ -119,6 +129,16 @@ public class UIManager : GenericSingleton<UIManager>
         m_Win_Screen.gameObject.SetActive(false);
         m_Fail_Screen.gameObject.SetActive(false);
         m_Coins_Screen.gameObject.SetActive(false);
+    }
+
+
+    private void DisplayLoadingScreen()
+    {
+        m_Loading_Screen.gameObject.SetActive(true);
+    }
+    private void DisableLoadingScreen()
+    {
+        m_Loading_Screen.gameObject.SetActive(false);
     }
 }
 public enum UIScreenType
