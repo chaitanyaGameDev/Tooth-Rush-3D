@@ -6,16 +6,16 @@ using System;
 
 public class SimpleSaveSystem : MonoBehaviour
 {
-    //----------------------------------------------Variables-----------------------------------------------
+    //----------------------------------------------Variables-------------------------------------------------
 
     public readonly static string s_LevelNumberKey = "LevelNumber";
     public readonly static string s_SceneBuildIndexKey = "SceneBuildIndex";
     public readonly static string s_CoinsKey = "Coins";
 
 
-   private int m_SavableLvlNumber;
-   private int m_SavableSceneBuildIndex;
-   private int m_SavableCoins;
+    private int m_SavableLvlNumber;
+    private int m_SavableSceneBuildIndex;
+    private int m_SavableCoins;
 
     [Header("Uncheck on Final Build only for debugging")]
     [SerializeField] bool m_DeleteAllPrefs;
@@ -24,7 +24,7 @@ public class SimpleSaveSystem : MonoBehaviour
 
     public static event Action s_SaveSystemUpdated_event;
 
-    //----------------------------------------------Methods--------------------------------------------------
+    //----------------------------------------------Methods-----------------------------------------------------
 
     private void Start()
     {
@@ -100,7 +100,8 @@ public class SimpleSaveSystem : MonoBehaviour
 
         m_SavableCoins = newCoins;
     }
-   
+
+    //Saves the data
     private void Save()
     {
         PlayerPrefs.SetInt(s_LevelNumberKey,m_SavableLvlNumber);

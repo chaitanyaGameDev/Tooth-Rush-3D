@@ -28,7 +28,13 @@ public class CharacterSideRotation : MonoBehaviour
         if (Character.s_State == CharacterState.Idle || Character.s_State == CharacterState.Moving)
         {
             SideTurnRotation();
-        }    
+        }
+
+        if (Character.s_State == CharacterState.Victory)
+        {
+            Quaternion victoryRot = Quaternion.Euler(0f,180f,0f);
+            transform.rotation = victoryRot;
+        }
     }
 
     private void SideTurnRotation()

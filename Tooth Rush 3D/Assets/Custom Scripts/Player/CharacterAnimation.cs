@@ -50,6 +50,9 @@ public class CharacterAnimation : MonoBehaviour
                 m_Animator.SetTrigger("Death");
                 break;
 
+            case CharacterState.Victory:
+                m_Animator.SetTrigger("Victory");
+                break;
         }
     }
 }

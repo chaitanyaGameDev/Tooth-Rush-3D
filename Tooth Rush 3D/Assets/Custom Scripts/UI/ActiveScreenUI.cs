@@ -10,11 +10,19 @@ public class ActiveScreenUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI m_Score_Text;
 
     //----------------------------------------------Methods--------------------------------------------------
-   
 
-    private void UpdateScoreText(int value)
+    private void OnEnable()
     {
-        m_Score_Text.text = value.ToString();
+        ScoreManager.s_ScoreUpdated_event += UpdateScoreText;
+    }
+    private void OnDisable()
+    {
+        ScoreManager.s_ScoreUpdated_event -= UpdateScoreText;
+    }
+
+    private void UpdateScoreText()
+    {
+        m_Score_Text.text = ScoreManager.Instance.CurrentScore.ToString();
     }
   
 }

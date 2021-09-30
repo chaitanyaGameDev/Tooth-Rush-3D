@@ -9,7 +9,7 @@ public class CoinManager : GenericSingleton<CoinManager>
 
     public static readonly int PerPiece_Coin = 1;
 
-    public int CurrentCoins { private set; get; }
+    public int CurrentCoins{ private set; get; }
 
     //----------------------------------------------Delegate--------------------------------------------------
 

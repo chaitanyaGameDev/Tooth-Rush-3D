@@ -25,21 +25,21 @@ public class UIManager : MonoBehaviour
     {
         Player.s_OnStateChanged_event += CheckPlayerStateAndEnableUI;
 
-        WinScreenUI.s_NextButtonClicked_Event += DisableAllDisplay;
+        WinScreenUI.s_NextButtonClicked_event += DisableAllDisplay;
         FailScreenUI.s_ContinueButtonClick_Event += DisableAllDisplay;
     } 
     private void OnDisable()
     {
         Player.s_OnStateChanged_event -= CheckPlayerStateAndEnableUI;
 
-        WinScreenUI.s_NextButtonClicked_Event -= DisableAllDisplay;
+        WinScreenUI.s_NextButtonClicked_event -= DisableAllDisplay;
         FailScreenUI.s_ContinueButtonClick_Event -= DisableAllDisplay;
     }
 
 
+    //Logic to UIScreens at a particuar Player State
     private void CheckPlayerStateAndEnableUI(PlayerState state)
     {
-
         switch (state)
         {
             case PlayerState.WaitingForInput:
@@ -53,7 +53,7 @@ public class UIManager : MonoBehaviour
                 break;
             case PlayerState.LevelCompleted:
                 QuickAllUIDisable();
-                ShowDisplayUIScreen(UIScreenType.WinScreen,3f,true);
+                ShowDisplayUIScreen(UIScreenType.WinScreen,5f,true);
                 break;
             case PlayerState.LevelFailed:
                 QuickAllUIDisable();
@@ -65,11 +65,7 @@ public class UIManager : MonoBehaviour
     }
 
 
-
-
-
-
-
+    //Displayes UI Screen 
     private void ShowDisplayUIScreen(UIScreenType screenType ,float delay,bool status)
     {
         StartCoroutine(DelayUIDisplay(screenType,delay,status));
@@ -97,6 +93,8 @@ public class UIManager : MonoBehaviour
                 break;
         }
     }
+
+    //Disables UI Screen
     private void DisableAllDisplay()
     {
         StartCoroutine(DelayDisableAll());
@@ -110,6 +108,8 @@ public class UIManager : MonoBehaviour
         m_Fail_Screen.gameObject.SetActive(false);
         m_Coins_Screen.gameObject.SetActive(false);
     }
+
+    //Disables All UI Screen
     private void QuickAllUIDisable()
     {
         m_Start_Screen.gameObject.SetActive(false);

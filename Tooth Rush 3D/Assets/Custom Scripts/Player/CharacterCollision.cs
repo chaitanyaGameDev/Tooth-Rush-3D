@@ -20,13 +20,13 @@ public class CharacterCollision : MonoBehaviour
     public static event Action s_OnUnHealth_Triggered_event;
 
 
-   
-
     //----------------------------------------------MMFeedbacks--------------------------------------------------
 
 
     [SerializeField] MMFeedbacks m_CoinCollect_FB;
     [SerializeField] MMFeedbacks m_FoodCollect_FB;
+    [SerializeField] MMFeedbacks m_ToothPasteCollect_FB;   
+    [SerializeField] MMFeedbacks m_LevelCompleted_FB;
 
     //----------------------------------------------Methods--------------------------------------------------
     private void OnTriggerEnter(Collider other)
@@ -51,7 +51,12 @@ public class CharacterCollision : MonoBehaviour
                     //Manager Updates
                     ScoreManager.Instance.UpdateScore(ScoreManager.ToothPaste_Score);
 
+
+                    m_ToothPasteCollect_FB.PlayFeedbacks();
+
                     break;
+
+
 
                 case HealthyItemType.ToothBrushing:
 
@@ -64,9 +69,6 @@ public class CharacterCollision : MonoBehaviour
                     Destroy(other.GetComponent<Collider>());
                     //event
                     s_OnToothBrush_Triggered_event?.Invoke(giveHealth);
-
-
-                   
 
                     break;
             }
@@ -116,6 +118,9 @@ public class CharacterCollision : MonoBehaviour
         {
             Player.ChangeState(PlayerState.LevelCompleted);
             Character.ChangeState(CharacterState.Victory);
+
+            //Feedback
+            m_LevelCompleted_FB.PlayFeedbacks();
         }
     }
 }

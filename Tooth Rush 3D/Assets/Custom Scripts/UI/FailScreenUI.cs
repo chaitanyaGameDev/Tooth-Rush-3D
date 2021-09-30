@@ -22,14 +22,11 @@ public class FailScreenUI : MonoBehaviour
     private void OnEnable()
     {
         m_Continue_Button.interactable = true;
-        UpdateFinalScoreAndCoinsText();
-    }
-    private void UpdateFinalScoreAndCoinsText()
-    {
-       
-    }
 
 
+        UpdateFinalScore();
+    }
+  
     public void ContinueButtonClicked()
     {
         s_ContinueButtonClick_Event?.Invoke();
@@ -39,5 +36,8 @@ public class FailScreenUI : MonoBehaviour
         Debug.Log("ContinueClicked");
     }
 
-  
+    private void UpdateFinalScore()
+    {
+        m_FinalScore_Text.text = ScoreManager.Instance.CurrentScore.ToString();
+    }
 }

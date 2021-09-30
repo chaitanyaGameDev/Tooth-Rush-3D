@@ -7,6 +7,7 @@ public class ToothAgeing : MonoBehaviour
 {
     //----------------------------------------------Variables-----------------------------------------------
 
+    [Header("Set Start State")]
     [SerializeField] ToothAgeState m_Start_State;
 
     public static ToothAgeState s_CurrentState { private set; get; }
@@ -16,7 +17,7 @@ public class ToothAgeing : MonoBehaviour
     public ToothAgeingConstraints m_ageConstraints;
 
 
-    public static bool s_HasGerms;
+    public static bool s_HasGerms { private set; get; }
 
     //----------------------------------------------Delegate--------------------------------------------------
 
@@ -116,7 +117,6 @@ public class ToothAgeing : MonoBehaviour
             s_HasGerms = true;
         }
 
-
         if (ToothHealth.s_Health <= m_ageConstraints.ShinyTooth_Start && ToothHealth.s_Health >= m_ageConstraints.ShinyTooth_End)
         {
             ChangeState(ToothAgeState.Shiny);
@@ -129,14 +129,12 @@ public class ToothAgeing : MonoBehaviour
 
         else if (ToothHealth.s_Health <= m_ageConstraints.Germs_Start && ToothHealth.s_Health >= m_ageConstraints.Germs_End)
         {
-
            // s_HasGerms = true;
-            ChangeState(ToothAgeState.Germs);
-            
+            ChangeState(ToothAgeState.Germs);         
         }
 
        
-        if (ToothHealth.s_Health <= m_ageConstraints.Plague1_Start && ToothHealth.s_Health >= m_ageConstraints.Plague1_End)
+        else if (ToothHealth.s_Health <= m_ageConstraints.Plague1_Start && ToothHealth.s_Health >= m_ageConstraints.Plague1_End)
         {
             ChangeState(ToothAgeState.Plague1);
         }
@@ -168,17 +166,15 @@ public class ToothAgeing : MonoBehaviour
  
     }
 
-    public void ChangeState(ToothAgeState state)
+    private void ChangeState(ToothAgeState state)
     {
         s_PreviousState = s_CurrentState;
 
         s_CurrentState = state;
 
-
-       
+      
         //event
         s_OnStateChanged_event?.Invoke(s_CurrentState);     
-
     }
 
 }

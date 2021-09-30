@@ -7,27 +7,26 @@ public class PlayerMovement : MonoBehaviour
 {
     //----------------------------------------------Variables-----------------------------------------------
 
-    List<Vector3> m_MovePath = new List<Vector3>();
-    private float m_MoveSpeed = 7.5f;
-    private float m_rotationSpeed = 5f;
+    private List<Vector3> m_MovePath = new List<Vector3>();
 
+    [SerializeField]  private float m_MoveSpeed = 7.5f;
+    [SerializeField]  private float m_rotationSpeed = 5f;
+    [SerializeField]  private float m_accuracy = 1f;
+
+   
     private int m_CurrentPointID = 0;
     private bool m_IsPointsAvailable = false;
-
-    private float m_accuracy = 1f;
-
     private bool m_CanMove;
-
     //----------------------------------------------Methods--------------------------------------------------
     private void OnEnable()
     {
         PlayerCollision.s_OnGroundEntry_Triggered_event += SetMovementPath;
-        PlayerInput.s_OnHoldingInp_event += SetCanMove;
+       
     }
     private void OnDisable()
     {
         PlayerCollision.s_OnGroundEntry_Triggered_event -= SetMovementPath;
-        PlayerInput.s_OnHoldingInp_event -= SetCanMove;
+       
     }
   
     private void LateUpdate()
@@ -37,26 +36,7 @@ public class PlayerMovement : MonoBehaviour
          {
             MoveAndRotateOnPath();
             Character.ChangeState(CharacterState.Moving);
-         }  
-
-
-        //Continus Forward movement
-     /*   if (Player.s_State == PlayerState.Playing)
-        {
-            Movement();
-            Character.ChangeState(CharacterState.Moving);
-        }*/
-
-
-        //Movement when user holding input
-       /* if (Player.s_State == PlayerState.Playing)
-        {
-            if (m_CanMove)
-            {
-                Movement();
-                
-            }
-        }*/
+         }     
     }
 
     private void MoveAndRotateOnPath()
@@ -65,12 +45,15 @@ public class PlayerMovement : MonoBehaviour
         {
 
             Vector3 lookAtGoal = new Vector3(m_MovePath[m_CurrentPointID].x, this.transform.position.y,
-               m_MovePath[m_CurrentPointID].z);
-
+               m_MovePath[m_CurrentPointID].z);      
 
             Vector3 direction = lookAtGoal - this.transform.position;
+
+
+
             this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(direction),
-                Time.deltaTime * m_rotationSpeed);
+            Time.deltaTime * m_rotationSpeed);
+
 
 
             if (direction.magnitude < m_accuracy)
@@ -78,11 +61,12 @@ public class PlayerMovement : MonoBehaviour
                 if (m_CurrentPointID < m_MovePath.Count - 1)
                 {
                     m_CurrentPointID++;
-                }
+                    
+                }             
             }
 
             Movement();
-
+      
         }
 
         else
@@ -90,17 +74,10 @@ public class PlayerMovement : MonoBehaviour
             Movement();
         }
     }
-
     private void Movement()
     {
         transform.position += transform.forward * m_MoveSpeed * Time.deltaTime;
     }
-
-
-
-
-   
-
     private void SetMovementPath(List<Transform> pathPoints)
     {
         m_MovePath.Clear();
@@ -111,18 +88,5 @@ public class PlayerMovement : MonoBehaviour
             m_MovePath.Add(pathPoints[i].position);
         }    
     }
-    private void SetCanMove(bool holdingInp)
-    {
-        m_CanMove = holdingInp;
 
-
-       /* if (holdingInp)
-        {
-            Character.ChangeState(CharacterState.Moving);
-        }
-        else if(!holdingInp)
-        {
-            Character.ChangeState(CharacterState.Idle);
-        }*/
-    }
 }
